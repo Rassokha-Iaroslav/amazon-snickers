@@ -8,6 +8,61 @@
     <artifactId>amazon-snickers</artifactId>
     <version>1.1</version>
 
+    <dependencies>
+        <dependency>
+            <artifactId>testng</artifactId>
+            <groupId>org.testng</groupId>
+            <version>7.1.0</version>
+        </dependency>
+        <dependency>
+            <artifactId>slf4j-api</artifactId>
+            <groupId>org.slf4j</groupId>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <artifactId>slf4j-log4j12</artifactId>
+            <groupId>org.slf4j</groupId>
+            <scope>test</scope>
+            <version>1.7.30</version>
+        </dependency>
+        <dependency>
+            <artifactId>log4j</artifactId>
+            <groupId>log4j</groupId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <artifactId>cucumber-java</artifactId>
+            <groupId>io.cucumber</groupId>
+            <version>4.7.4</version>
+        </dependency>
+        <dependency>
+            <artifactId>cucumber-picocontainer</artifactId>
+            <groupId>io.cucumber</groupId>
+            <scope>test</scope>
+            <version>6.1.1</version>
+        </dependency>
+        <dependency>
+            <artifactId>cucumber-testng</artifactId>
+            <groupId>io.cucumber</groupId>
+            <version>4.7.4</version>
+        </dependency>
+        <dependency>
+            <artifactId>owner</artifactId>
+            <groupId>org.aeonbits.owner</groupId>
+            <version>1.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>21.0</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
