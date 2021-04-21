@@ -26,6 +26,7 @@ public class MainPage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
         this.driver = driver;
+        acceptCookies();
     }
 
     private void acceptCookies() {

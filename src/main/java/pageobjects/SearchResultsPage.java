@@ -32,30 +32,33 @@ public class SearchResultsPage extends BasePage {
         this.driver = driver;
     }
 
-    private WebElement findCheapestProductFromSearchResult() {
-        int cheapestPrise = 0;
+    private WebElement findCheapestProductFromSearchResultWithName(String productName) {
+        double cheapestPrise = 0;
         WebElement cheapestProduct = null;
         for (WebElement product : foundProducts) {
-            int productPriseInt = 0;
-            String productPrise = product.findElement(By.cssSelector(PRODUCT_PRICE)).getText();
-            try {
-                productPriseInt = (int) NumberFormat.getNumberInstance(Locale.GERMANY).parse(productPrise);
-            } catch (ParseException e) {
-                log.debug("Product {} prise was not parsed successfully", product.findElement(By.cssSelector(PRODUCT_NAME)).getText());
-            }
-            if (cheapestPrise == 0 && productPriseInt != 0) {
-                cheapestPrise = productPriseInt;
-                cheapestProduct = product;
-            } else if (cheapestPrise > productPriseInt && productPriseInt != 0) {
-                cheapestPrise = productPriseInt;
-                cheapestProduct = product;
+            double productPriseInt = 0;
+            if (product.findElements(By.cssSelector(PRODUCT_PRICE)).size() > 0) {
+                String foundProductName = product.findElement(By.cssSelector(PRODUCT_NAME)).getText();
+                String productPrise = product.findElement(By.cssSelector(PRODUCT_PRICE)).getText();
+                try {
+                    productPriseInt = NumberFormat.getNumberInstance(Locale.GERMANY).parse(productPrise).doubleValue();
+                } catch (ParseException e) {
+                    log.debug("Product {} prise was not parsed successfully", product.findElement(By.cssSelector(PRODUCT_NAME)).getText());
+                }
+                if (cheapestPrise == 0 && productPriseInt != 0 && foundProductName.contains(productName)) {
+                    cheapestPrise = productPriseInt;
+                    cheapestProduct = product;
+                } else if (cheapestPrise > productPriseInt && productPriseInt != 0 && foundProductName.contains(productName)) {
+                    cheapestPrise = productPriseInt;
+                    cheapestProduct = product;
+                }
             }
         }
         return cheapestProduct;
     }
 
-    public ProductPage selectCheapestProduct() {
-        WebElement cheapestProduct = findCheapestProductFromSearchResult();
+    public ProductPage selectCheapestProductWithName(String productName) {
+        WebElement cheapestProduct = findCheapestProductFromSearchResultWithName(productName);
         Actions actions = new Actions(driver);
         actions.moveToElement(cheapestProduct);
         actions.perform();

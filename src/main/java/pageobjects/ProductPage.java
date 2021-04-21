@@ -9,8 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 public class ProductPage extends BasePage {
     private WebDriver driver;
     private static final String ADD_TO_CART_BUTTON = "#add-to-cart-button";
-    private static final String PRODUCTS_NUMBER_IN_CART = "nav-cart-count";
-    int productsNumberInCart = 0;
+    private static final String PRODUCTS_NUMBER_IN_CART = "#nav-cart-count";
 
     @FindBy(how = How.CSS, using = ADD_TO_CART_BUTTON)
     public WebElement addToCartButton;
