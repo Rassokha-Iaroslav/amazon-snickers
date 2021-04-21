@@ -1,6 +1,7 @@
 package stepdefinitions;
 
 import commons.EnvironmentHelper;
+import commons.TestConfigReader;
 import commons.TestContext;
 import commons.iTestsConfig;
 import enums.Context;
@@ -24,7 +25,7 @@ public class AmazonSteps {
 
     @When("user opens main page and search for {string}")
     public void userOpensMainPageAndSearch(String searchedString) {
-        basePage.openPage(testEnvConfig.host());
+        basePage.openPage(TestConfigReader.getHost());
         MainPage mainPage = new MainPage(testContext.getDriver());
         testContext.setContext(Context.SEARCH_RESULTS_PAGE, mainPage.searchForProduct(searchedString));
     }
