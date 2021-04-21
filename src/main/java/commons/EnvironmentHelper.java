@@ -7,7 +7,7 @@ public class EnvironmentHelper {
     private static iTestsConfig env;
 
     static {
-        String env = System.getProperty("env") == null ? "dev" : System.getProperty("env");
+        String env = System.getProperty("env") == null ? "test" : System.getProperty("env");
         ConfigFactory.setProperty("env", env);
         EnvironmentHelper.env = ConfigFactory.create(iTestsConfig.class);
     }
