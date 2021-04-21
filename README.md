@@ -23,7 +23,7 @@ For example:
 
 ### **How to run tests from IntelliJ:**
 
-   1. Open following folder  src/test/java/testrunners/RunCucumberTestsInSeries.java and execute 
+   1. Open following folder  src/test/java/testrunners/ and execute 
 
    2. Use one of following classes to run your tests:
       
