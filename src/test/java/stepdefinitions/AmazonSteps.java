@@ -1,9 +1,7 @@
 package stepdefinitions;
 
-import commons.EnvironmentHelper;
 import commons.TestConfigReader;
 import commons.TestContext;
-import commons.iTestsConfig;
 import enums.Context;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,7 +14,6 @@ import pageobjects.SearchResultsPage;
 public class AmazonSteps {
     private TestContext testContext;
     BasePage basePage;
-    public static iTestsConfig testEnvConfig = EnvironmentHelper.getEnv();
 
     public AmazonSteps(TestContext testContext) {
         this.testContext = testContext;
