@@ -36,9 +36,11 @@ public class MainPage extends BasePage {
     }
 
     public SearchResultsPage searchForProduct(String productName) {
+        waitVisibility(searchInputField);
         searchInputField.click();
         searchInputField.clear();
         searchInputField.sendKeys(productName);
+        waitVisibility(searchButton);
         searchButton.click();
         return new SearchResultsPage(driver);
     }

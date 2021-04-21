@@ -2,6 +2,7 @@ package pageobjects;
 
 import commons.TestsInitializer;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -59,9 +60,14 @@ public class SearchResultsPage extends BasePage {
 
     public ProductPage selectCheapestProductWithName(String productName) {
         WebElement cheapestProduct = findCheapestProductFromSearchResultWithName(productName);
-        Actions actions = new Actions(driver);
-        actions.moveToElement(cheapestProduct);
-        actions.perform();
+        //This way works not stable in Firefox
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(cheapestProduct);
+//        actions.perform();
+
+        //This way works stable in Chrome and FireFox
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", cheapestProduct);
+        waitVisibility(cheapestProduct);
         cheapestProduct.click();
         return new ProductPage(driver);
     }
