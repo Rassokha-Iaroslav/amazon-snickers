@@ -8,6 +8,39 @@
     <artifactId>amazon-snickers</artifactId>
     <version>1.1</version>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <encoding>UTF-8</encoding>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>3.7.0</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>**/RunCucumberTestsInParallel.java</include>
+                    </includes>
+                    <parallel>methods</parallel>
+                    <properties>
+                        <property>
+                            <name>dataproviderthreadcount</name>
+                            <value>${testsThreadNumber}</value>
+                        </property>
+                    </properties>
+                    <useUnlimitedThreads>true</useUnlimitedThreads>
+                </configuration>
+                <groupId>org.apache.maven.plugins</groupId>
+                <version>2.22.0</version>
+            </plugin>
+        </plugins>
+    </build>
+
     <dependencies>
         <dependency>
             <artifactId>testng</artifactId>
@@ -71,6 +104,9 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <cucumberRunner>RunCucumberTestsInParallel</cucumberRunner>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <testsThreadNumber>5</testsThreadNumber>
     </properties>
 
 </project>
