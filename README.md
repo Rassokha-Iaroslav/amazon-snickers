@@ -17,6 +17,8 @@
     d. `-DtestRunType=REGULAR` - to specify test run type. Amount and type of logged data depends on testRunType
 
     e. `-Dcucumber.options="classpath:features/amazonSearchTests.feature"` - to specify exact feature file to run (test suite)
+    
+    f. `-DtestsThreadNumber=5` - to specify number of concurrent threads for test execution
 
 For example:
 `mvn clean install -Dcucumber.options="classpath:features/amazonSearchTests.feature" -Dbrowser=firefox -Denv=test -Dhost=https://amazon.de -DtestRunType=DEBUG`
